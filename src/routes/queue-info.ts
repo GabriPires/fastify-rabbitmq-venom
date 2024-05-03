@@ -33,9 +33,11 @@ export async function queueInfo(app: FastifyInstance) {
       } catch (error) {
         reply.status(500).send({ message: 'Failed to load queue info.' })
       } finally {
-        if (connection) {
-          await connection.close()
-        }
+        setTimeout(async () => {
+          if (connection) {
+            await connection.close()
+          }
+        }, 500)
       }
     },
   )

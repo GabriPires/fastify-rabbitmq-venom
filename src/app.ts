@@ -7,6 +7,7 @@ import {
 
 import { venom } from './plugins/venom'
 import { queueInfo } from './routes/queue-info'
+import { sendMessageToQueue } from './routes/send-message-to-queue'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -16,6 +17,7 @@ app.setValidatorCompiler(validatorCompiler)
 app.register(venom)
 
 app.register(queueInfo)
+app.register(sendMessageToQueue)
 
 app
   .listen({
