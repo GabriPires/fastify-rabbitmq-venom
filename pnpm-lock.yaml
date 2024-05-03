@@ -11,6 +11,9 @@ dependencies:
   fastify:
     specifier: ^4.26.2
     version: 4.26.2
+  fastify-plugin:
+    specifier: ^4.5.1
+    version: 4.5.1
   fastify-type-provider-zod:
     specifier: ^1.1.9
     version: 1.1.9(fastify@4.26.2)(zod@3.23.6)
@@ -2824,6 +2827,10 @@ packages:
 
   /fast-uri@2.3.0:
     resolution: {integrity: sha512-eel5UKGn369gGEWOqBShmFJWfq/xSJvsgDzgLYC845GneayWvXBf0lJCBn5qTABfewy1ZDPoaR5OZCP+kssfuw==}
+    dev: false
+
+  /fastify-plugin@4.5.1:
+    resolution: {integrity: sha512-stRHYGeuqpEZTL1Ef0Ovr2ltazUT9g844X5z/zEBFLG8RYlpDiOCIG+ATvYEp+/zmc7sN29mcIMp8gvYplYPIQ==}
     dev: false
 
   /fastify-type-provider-zod@1.1.9(fastify@4.26.2)(zod@3.23.6):

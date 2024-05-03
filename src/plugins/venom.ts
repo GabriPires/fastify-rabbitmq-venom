@@ -1,9 +1,10 @@
 import type { FastifyInstance } from 'fastify'
+import fastifyPlugin from 'fastify-plugin'
 import { create } from 'venom-bot'
 
 export const defaultQueue = 'queue'
 
-export async function venom(app: FastifyInstance) {
+async function venom(app: FastifyInstance) {
   const venomClient = await create({
     session: defaultQueue,
   })
@@ -16,3 +17,7 @@ export async function venom(app: FastifyInstance) {
 
   app.decorate('venom', venomClient)
 }
+
+export const venomPlugin = fastifyPlugin(venom, {
+  name: 'venom',
+})
