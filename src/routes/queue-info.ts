@@ -11,7 +11,7 @@ export async function queueInfo(app: FastifyInstance) {
     '/queue-info',
     {
       schema: {
-        params: z.object({
+        querystring: z.object({
           queue: z.string().optional(),
         }),
       },
@@ -20,7 +20,7 @@ export async function queueInfo(app: FastifyInstance) {
       let connection: Connection | null = null
 
       try {
-        const { queue } = request.params
+        const { queue } = request.query
 
         connection = await amqpConnection()
         const channel = await connection.createChannel()
