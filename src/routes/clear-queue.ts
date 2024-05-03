@@ -1,9 +1,8 @@
-import type { Connection } from 'amqplib'
 import type { FastifyInstance } from 'fastify'
 import type { ZodTypeProvider } from 'fastify-type-provider-zod'
 import z from 'zod'
 
-import { amqpConnection } from '@/lib/amqp'
+import { connectRabbitMQ } from '@/lib/amqp'
 
 export async function clearQueue(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().delete(
@@ -16,14 +15,11 @@ export async function clearQueue(app: FastifyInstance) {
       },
     },
     async (request, reply) => {
-      let connection: Connection | null = null
+      const { queue } = request.body
+
+      const channel = await connectRabbitMQ(queue)
 
       try {
-        const { queue } = request.body
-
-        connection = await amqpConnection()
-        const channel = await connection.createChannel()
-
         await channel.assertQueue(queue, { durable: true })
 
         await channel.consume(
@@ -39,9 +35,7 @@ export async function clearQueue(app: FastifyInstance) {
         reply.status(500).send({ message: 'Failed to send message to queue.' })
       } finally {
         setTimeout(async () => {
-          if (connection) {
-            await connection.close()
-          }
+          await channel.close()
         }, 500)
       }
     },
