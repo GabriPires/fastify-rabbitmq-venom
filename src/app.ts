@@ -1,6 +1,14 @@
 import { fastify } from 'fastify'
+import {
+  serializerCompiler,
+  validatorCompiler,
+  ZodTypeProvider,
+} from 'fastify-type-provider-zod'
 
-const app = fastify()
+const app = fastify().withTypeProvider<ZodTypeProvider>()
+
+app.setSerializerCompiler(serializerCompiler)
+app.setValidatorCompiler(validatorCompiler)
 
 app
   .listen({
