@@ -6,6 +6,7 @@ import {
 } from 'fastify-type-provider-zod'
 
 import { venom } from './plugins/venom'
+import { queueInfo } from './routes/queue-info'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -13,6 +14,8 @@ app.setSerializerCompiler(serializerCompiler)
 app.setValidatorCompiler(validatorCompiler)
 
 app.register(venom)
+
+app.register(queueInfo)
 
 app
   .listen({

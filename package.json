@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@gabpires/eslint-config": "^1.3.2",
+    "@types/amqplib": "^0.10.5",
     "@types/node": "^20.12.8",
     "eslint-plugin-simple-import-sort": "^12.1.0",
     "tsx": "^4.9.0",

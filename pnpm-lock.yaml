@@ -25,6 +25,9 @@ devDependencies:
   '@gabpires/eslint-config':
     specifier: ^1.3.2
     version: 1.3.2(eslint@8.57.0)(typescript@5.4.5)
+  '@types/amqplib':
+    specifier: ^0.10.5
+    version: 0.10.5
   '@types/node':
     specifier: ^20.12.8
     version: 20.12.8
@@ -826,6 +829,12 @@ packages:
       '@tufjs/canonical-json': 1.0.0
       minimatch: 9.0.3
     dev: false
+
+  /@types/amqplib@0.10.5:
+    resolution: {integrity: sha512-/cSykxROY7BWwDoi4Y4/jLAuZTshZxd8Ey1QYa/VaXriMotBDoou7V/twJiOSHzU6t1Kp1AHAUXGCgqq+6DNeg==}
+    dependencies:
+      '@types/node': 20.12.8
+    dev: true
 
   /@types/debug@4.1.12:
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
