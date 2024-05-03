@@ -8,7 +8,7 @@ import { defaultQueue } from '@/plugins/venom'
 
 export async function queueInfo(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().get(
-    '/queue-info',
+    '/queue/info',
     {
       schema: {
         querystring: z.object({

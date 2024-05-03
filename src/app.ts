@@ -6,6 +6,7 @@ import {
 } from 'fastify-type-provider-zod'
 
 import { venom } from './plugins/venom'
+import { clearQueue } from './routes/clear-queue'
 import { queueInfo } from './routes/queue-info'
 import { sendMessageToQueue } from './routes/send-message-to-queue'
 
@@ -18,6 +19,7 @@ app.register(venom)
 
 app.register(queueInfo)
 app.register(sendMessageToQueue)
+app.register(clearQueue)
 
 app
   .listen({
